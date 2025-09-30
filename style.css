@@ -1,0 +1,234 @@
+.row {
+    flex-wrap: nowrap!important;
+}
+
+.lewo {
+	background-color: rgba(0,0,0);
+    max-width: 240px;
+    border-right: 1px solid rgba(255,255,255, 0.1);
+}
+
+.prawo {
+	background-color: black;
+    flex: 1;
+    overflow: hidden;
+}
+
+.logo {
+	height: 100px;
+	margin: 0 15px;
+	background-image: url('assets/img/ttlogo.png');
+	background-position: left;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+
+.search {
+	display: flex;
+	align-items: center;
+	border-radius: 50px;
+	cursor: pointer;
+	position: relative;
+	justify-content: right;
+	width: 90%;
+	max-width: 200px;
+	margin-bottom: 15px;
+}
+
+.search input:focus-visible {
+	outline: none;
+}   
+
+.search-icon {
+	position: absolute;
+	left: 5px;
+}
+
+.search input {
+	border: none !important;
+	border-radius: 50px;
+	background: transparent;
+	padding: 8px;
+	width: 90%;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.przycisk {
+	display: flex;
+	gap: 15px;
+	color: #fff;
+	font-size: 18px;
+	align-items: center;
+	padding: 6px 0;
+	border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+	padding-left: 10px;
+}
+
+.przycisk.active {
+	color: #ff3b5c;
+}
+
+.przycisk:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.lewo-srodek {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-bottom: 30px;
+}
+
+.zalogujwrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.zaloguj {
+	background-color: #ff3b5c;
+	color: #fff;
+	padding: 10px;
+	font-size: 15px;
+	text-align: center;
+	border-radius: 5px;
+	width: 87%;
+	margin: 0 25px;
+	font-weight: bold;
+	cursor: pointer;
+	user-select: none;
+	margin-bottom: 20px;
+}
+
+.zaloguj:hover {
+	background-color: #ff2b4f;
+}
+
+@media screen and (max-width: 1025px) {
+	.logo {
+		height: 50px;
+		margin: 20px 0;
+		background-image: url('https://www.pagetraffic.com/blog/wp-content/uploads/2022/06/new-latest-tiktok-logo-png.png');
+        background-position: center;
+	}
+
+    .lewo {
+        max-width: 90px;
+    }
+	.przycisktext {
+		display: none;
+	}
+    
+    .search-icon{
+        left: 10px;
+    }
+
+    .search input {
+        display: none;
+    }
+
+    .zalogujwrapper{
+        display:  none;
+    }
+}
+
+.ttWrap {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.ttall {
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ttall video {
+    width: 100%;
+}
+
+.przyciskiprawo{
+    gap: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+    padding-bottom: 20px;
+}
+
+.profil {
+    width: 50px;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.profil img {
+    width: 100%;
+}
+
+.profil.plus::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "+";
+    padding-bottom: 4px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1px;
+    border-radius: 50%;
+    background-color:#ff3b5c;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translate(-50%, 0);
+}
+
+.przycisktt {
+    padding: 15px 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.przycisktt i {
+    color: #fff;
+    font-size: 20px;
+}
+
+.ile {
+    color: rgba(255,255,255, 0.6);
+    font-weight: bold;
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px;
+}
+
+@media screen and (max-width: 721px) {
+    .ttWrap {
+        justify-content: left;
+    }
+    .profil {
+        width: 40px;
+    }
+    .przycisktt {
+        padding: 12px 9px;
+    }
+    .przycisktt i {
+        font-size: 17px;
+    }
+}
