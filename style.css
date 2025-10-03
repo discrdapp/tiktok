@@ -149,6 +149,7 @@
     align-items: center;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.05);
+    user-select: none;
 }
 
 .ttall video {
@@ -162,6 +163,7 @@
     justify-content: end;
     height: 100%;
     padding-bottom: 20px;
+    user-select: none;
 }
 
 .profil {
