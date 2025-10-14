@@ -286,7 +286,7 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	word-break: break-word;
-	-webkit-line-clamp: 1; /* show only one line */
+	-webkit-line-clamp: 1;
 	max-height: 20px;
 }
 
@@ -314,19 +314,15 @@
 	content: 'Mniej';
 }
 
-/* Disable Bootstrap collapse animation globally */
 .collapse {
   transition: none !important;
 }
 
-/* Optional — keeps layout smoother during instant toggle */
 .collapsing {
   height: auto !important;
   transition: none !important;
 }
 
-
-/* Pasek postępu */
 .progress-bar-container {
 	position: absolute;
 	bottom: 0;
@@ -382,7 +378,6 @@
 	opacity: 1;
 }
 
-/* --- Volume Control --- */
 .volume-control {
 	position: absolute;
 	top: 20px;
@@ -405,7 +400,7 @@
 	transform: scale(1.1);
 }
 
-/* Slider hidden by default */
+
 .volume-slider {
 	width: 100px;
 	height: 4px;
@@ -418,13 +413,11 @@
 	transition: opacity 0.2s ease, width 0.2s ease;
 }
 
-/* When hovering the volume control, show slider */
 .volume-control:hover .volume-slider {
 	opacity: 1;
 	pointer-events: auto;
 }
 
-/* Slider thumb */
 .volume-slider::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	width: 10px;
@@ -467,9 +460,9 @@
 	filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* Show when video is paused */
 .video-paused .pause-overlay {
 	opacity: 0.8;
 }
+
 
 
