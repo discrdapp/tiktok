@@ -110,7 +110,7 @@
 	.logo {
 		height: 50px;
 		margin: 20px 0;
-		background-image: url('img/ttsmall.png');
+		background-image: url('assets/img/ttsmall.png');
 		background-position: center;
 	}
 
@@ -471,4 +471,5 @@
 .video-paused .pause-overlay {
 	opacity: 0.8;
 }
+
 
