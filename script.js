@@ -3,7 +3,6 @@ const t2 = document.getElementById('t2')
 const t3 = document.getElementById('t3')
 const twrap = document.getElementById('twrap')
 
-// --- STATE MANAGEMENT ---
 const tiktoki = [
 	{
 		id: '1',
@@ -44,8 +43,6 @@ let history = []
 let currentHistoryIndex = -1
 let isAnimating = false
 let startY = 0
-
-// --- HELPER FUNCTIONS ---
 
 function createTiktokHTML(tiktokData) {
 	if (!tiktokData) return ''
@@ -112,25 +109,23 @@ function setupBootstrapCollapse(wrapper) {
 	const collapseEl = wrapper.querySelector('.collapse')
 
 	if (!preview || !full || !btn) return
-
-	// Hide toggle if text fits in one line
+	
 	requestAnimationFrame(() => {
 		const isOverflowing = preview.scrollHeight > preview.clientHeight + 1
 		if (!isOverflowing) {
 			btn.style.display = 'none'
-			collapseEl.remove() // no need for collapse if short
+			collapseEl.remove()
 			return
 		}
 	})
 
-	// Listen for Bootstrap collapse events
 	collapseEl.addEventListener('show.bs.collapse', () => {
 		btn.classList.remove('collapsed')
-		preview.style.display = 'none' // hide preview
+		preview.style.display = 'none'
 	})
 	collapseEl.addEventListener('hide.bs.collapse', () => {
 		btn.classList.add('collapsed')
-		preview.style.display = '-webkit-box' // show truncated again
+		preview.style.display = '-webkit-box'
 	})
 }
 
@@ -144,7 +139,6 @@ function setupProgressBar(slotElement) {
 
 	let isDragging = false
 
-	// Aktualizacja paska w czasie odtwarzania
 	video.addEventListener('timeupdate', () => {
 		if (isDragging) return
 		const progress = (video.currentTime / video.duration) * 100
@@ -152,7 +146,6 @@ function setupProgressBar(slotElement) {
 		handle.style.left = `${progress}%`
 	})
 
-	// Kliknięcie na pasek
 	bar.addEventListener('click', e => {
 		const rect = bar.getBoundingClientRect()
 		const x = e.clientX - rect.left
@@ -160,7 +153,6 @@ function setupProgressBar(slotElement) {
 		video.currentTime = video.duration * percent
 	})
 
-	// Drag and drop kulki
 	handle.addEventListener('mousedown', e => {
 		isDragging = true
 		bar.classList.add('dragging')
@@ -185,7 +177,7 @@ function setupProgressBar(slotElement) {
 	}
 }
 
-let globalVolume = 0.5 // shared across videos
+let globalVolume = 0.5
 let globalMuted = true
 
 function setupVolumeControl(slotElement) {
@@ -211,7 +203,6 @@ function setupVolumeControl(slotElement) {
 		}
 	}
 
-	// Function to sync this slot with global state
 	function syncWithGlobal() {
 		video.volume = globalVolume
 		video.muted = globalMuted
@@ -219,7 +210,6 @@ function setupVolumeControl(slotElement) {
 		updateIcon()
 	}
 
-	// Click icon → toggle mute
 	icon.addEventListener('click', () => {
 		if (video.muted || video.volume === 0) {
 			globalMuted = false
@@ -227,14 +217,12 @@ function setupVolumeControl(slotElement) {
 		} else {
 			globalMuted = true
 		}
-		// Update all slots
 		document.querySelectorAll('.ttall').forEach(slot => {
 			const ctrl = slot.querySelector('.volume-control')
 			if (ctrl) setupVolumeControlSync(slot)
 		})
 	})
 
-	// Slider
 	slider.addEventListener('input', e => {
 		const val = parseFloat(e.target.value)
 		globalVolume = val
@@ -245,7 +233,6 @@ function setupVolumeControl(slotElement) {
 		})
 	})
 
-	// Helper for syncing without re-attaching listeners
 	function setupVolumeControlSync(slot) {
 		const v = slot.querySelector('video')
 		const s = slot.querySelector('.volume-slider')
@@ -269,18 +256,14 @@ function setupPauseOverlay(slotElement) {
 
 	if (!video || !wrapper) return
 
-	// Remove any leftover class first
 	wrapper.classList.remove('video-paused')
 
-	// Function to sync overlay with actual video state
 	function updateOverlay() {
 		wrapper.classList.toggle('video-paused', video.paused)
 	}
 
-	// Initial sync
 	updateOverlay()
-
-	// Toggle play/pause only when clicking on the video itself
+	
 	wrapper.addEventListener('click', e => {
 		if (!slotElement.classList.contains('active')) return
 		if (e.target !== video) return
@@ -291,12 +274,10 @@ function setupPauseOverlay(slotElement) {
 			video.pause()
 		}
 	})
-
-	// Listen for programmatic play/pause events
+	
 	video.addEventListener('play', updateOverlay)
 	video.addEventListener('pause', updateOverlay)
 
-	// Extra: force overlay update after a short delay in case autoplay starts
 	setTimeout(updateOverlay, 50)
 }
 
@@ -333,7 +314,6 @@ function managePlayback(activeSlot) {
 	}
 
 	if (activeVideo) {
-		// 🆕 Apply global audio state
 		activeVideo.volume = globalVolume
 		activeVideo.muted = globalMuted
 
@@ -343,7 +323,6 @@ function managePlayback(activeSlot) {
 		})
 	}
 }
-// --- CORE SCROLLING LOGIC (unchanged) ---
 function scrollNext() {
 	if (isAnimating) return
 	isAnimating = true
@@ -431,7 +410,6 @@ function scrollPrevious() {
 	}
 }
 
-// --- EVENT LISTENERS (unchanged) ---
 function handleDragStart(e) {
 	if (isAnimating) return
 	startY = e.clientY || e.touches[0].clientY
@@ -481,7 +459,6 @@ function handleDragEnd(e) {
 	}
 }
 
-// --- INITIALIZATION ---
 function initialize() {
 	history.push(getNextRandomTiktok().id)
 	history.push(getNextRandomTiktok().id)
@@ -500,3 +477,4 @@ function initialize() {
 }
 
 initialize()
+
