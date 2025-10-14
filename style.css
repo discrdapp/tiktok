@@ -110,7 +110,7 @@
 	.logo {
 		height: 50px;
 		margin: 20px 0;
-		background-image: url('https://www.pagetraffic.com/blog/wp-content/uploads/2022/06/new-latest-tiktok-logo-png.png');
+		background-image: url('img/ttsmall.png');
 		background-position: center;
 	}
 
@@ -471,3 +471,4 @@
 .video-paused .pause-overlay {
 	opacity: 0.8;
 }
+
